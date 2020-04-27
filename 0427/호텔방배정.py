@@ -1,4 +1,5 @@
 # 핵심은 중복적으로 하나하나 세는 것을 방지하는거일걸.
+import sys
 
 def solution(k, room_number):
     answer = []
@@ -16,12 +17,13 @@ def solution(k, room_number):
                     checkIn[next_room] = next_room + 1
                     answer.append(next_room)
                     for s in stack:
-                        checkIn[s] = next_room
+                        checkIn[s] = next_room + 1
                     stack = []
                     break
                 else:
                     stack.append(next_room)
-                    next_room += 1
+                    next_room = checkIn[next_room] # 좀 바꾼 로직
+                    # 이거로 먹여줘야지, +1 로 하면 아까랑 다를게 없지
     # print(answer)
     return answer
 
