@@ -7,7 +7,9 @@ def remove_sharp(m):
             continue
         else:
             new_m += m[i]
-    new_m += m[-1]
+    # 아 여기가..!
+    if m[-1] != '#':
+        new_m += m[-1]
     return new_m
 
 def solution(m, musicinfos):
@@ -39,12 +41,14 @@ def solution(m, musicinfos):
         if m in melody_string:
             hubo_list.append((total_time, music))
     # print(hubo_list)
-    hubo_list.sort(reverse=True)
+    # hubo_list.sort(reverse=True)
+    hubo_list = sorted(hubo_list, key = lambda x: x[0] ,reverse=True)
     if hubo_list != []:
         answer = hubo_list[0][1]
     else:
-        answer = "`(None)`"
+        answer = "(None)"
     return answer
 
 
-solution('ABCDEFG', ['12:00,12:14,HELLO,CDEFGAB', '13:00,13:05,WORLD,ABCDEF'])
+# solution('ABCDEFG', ['12:00,12:14,HELLO,CDEFGAB', '13:00,13:05,WORLD,ABCDEF'])
+solution('CC#BCC#BCC#BCC#B', ['03:00,03:30,FOO,CC#B', '04:00,04:08,BAR,CC#BCC#BCC#B'])
