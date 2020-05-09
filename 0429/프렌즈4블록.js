@@ -7,9 +7,9 @@ function solution(m, n, board) {
     }
     // console.log(board)
 
-    let flag = false
-    while (flag === false) {
-        flag = true
+    // let flag = false
+    while (true) {
+        let flag = true
         const will_delete = [];
         for (let i = 0; i < m - 1; i++) {
             for (let j = 0; j < n - 1; j++) {
@@ -21,6 +21,9 @@ function solution(m, n, board) {
                     will_delete.push([i, j])
                 }
             }
+        }
+        if (flag === true) {
+            break
         }
 
         // console.log(will_delete)
