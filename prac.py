@@ -6,7 +6,18 @@
 # b[1] = '5'
 # b[3] = '9'
 
-aa = 'asdfgh'
-bb = aa.lstrip('asd')
+# aa = 'asdfgh'
+# bb = aa.lstrip('asd')
 
-print(bb)
+# print(bb)
+
+a = [1,2]
+b = [1,2,3,4]
+c = [3,5]
+d = '123'
+
+if a in b:
+    print('ab')
+
+if c in b:
+    print('cb')
