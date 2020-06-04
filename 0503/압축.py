@@ -43,3 +43,5 @@ solution('TOBEORNOTTOBEORTOBEORNOT')
 # 좀 돌아서 하느라 43분이나 걸렸어.
 
 # tmp = {chr(e + 64): e for e in range(1, 27)} 이거로 알파벳 딕트 만든다.
+
+# 시간은 넘 연연하지마!!! 하나라도 더 배우는게 중요한거야.
