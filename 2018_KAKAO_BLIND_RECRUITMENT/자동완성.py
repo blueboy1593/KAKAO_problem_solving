@@ -15,7 +15,6 @@ def solution(words):
             else:
                 start[word[i]] = {}
             start = start[word[i]]
-        print(start)
         start['done'] : 1
     print(words_pedia)
     return answer
