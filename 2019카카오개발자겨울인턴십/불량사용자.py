@@ -21,17 +21,23 @@ def solution(user_id, banned_id):
     total_users = set()
     user_stack = []
     def match(i):
+        # print(user_stack)
         if i == banned_len:
             total_users.add(tuple(sorted(user_stack[:])))
+            print('토탈유저', total_users)
             return
         ban_id = banned_id[i]
         for j in range(user_len):
+            print(user_stack)
             if user_id[j] not in user_stack: # 현재 스택에 중복되어 있는지.
                 if check_id(user_id[j], banned_id[i]): # 불량 사용자와 매치가 되는지
                     user_stack.append(user_id[j])
                     match(i + 1)
+                    # print(user_stack)
                     user_stack.pop()
     match(0)
 
     answer = len(total_users)
     return answer
+
+solution(["frodo", "fradi", "crodo", "abc123", "frodoc"], ["fr*d*", "*rodo", "******", "******"])
