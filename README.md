@@ -29,5 +29,29 @@ answer = float('-inf')
 
 
 
+### 3. 투포인터와 슬라이딩 윈도우
+
+https://blog.naver.com/kks227/220795165570
+
+위의 블로그에 자세하게 나와 있다.
+
+투포인터 : pivot 같은 느낌 2개를 움직여가면서 구간합 구하기.
+
+슬라이딩 윈도우 : 구하고 싶은 구간을 미리 정해놓고 훑어보기.
+
+
+
+### 4. Dictionary 활용 중 Defaultdict
+
+```python
+gems_dict = defaultdict(lambda: 0)
+del gems_dict[gems[sta]]
+```
+
+- 디폴트딕트는 자동으로 숫자가 0인 딕셔너리 구성해주는 것
+- del은 딕셔너리에서 삭제. 유용하게 쓰일 듯.
+
+
+
 
 
