@@ -53,5 +53,27 @@ del gems_dict[gems[sta]]
 
 
 
+### 5. Counter, Reduce
+```python
+def solution(clothes):
+    from collections import Counter
+    from functools import reduce
+    cnt = Counter([kind for name, kind in clothes])
+    answer = reduce(lambda x, y: x*(y+1), cnt.values(), 1) - 1
+    return answer
+```
+
+카운터...흠
+
+reduce : 자바스크립트에서 내가 알던 그 리듀스인가?
 
 
+
+### 6. 배열 90도 회전하기!
+
+```python
+arr = list(zip(*arr))
+arr = list(zip(*arr[::-1])) # 이게 90도 회전임.
+```
+
+이거 굉장히 중요한 잡기술임. 기억해두자
