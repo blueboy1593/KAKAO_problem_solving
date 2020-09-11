@@ -77,3 +77,26 @@ arr = list(zip(*arr[::-1])) # 이게 90도 회전임.
 ```
 
 이거 굉장히 중요한 잡기술임. 기억해두자
+
+
+
+### 7. A부터 Z까지 dictionary 만들기
+
+```python
+alpha_dict = {chr(e + 64): e for e in range(1, 27)}
+
+myDic = dict(zip("ABCDEFGHIJKLMNOPQRSTUVWXYZ", range(1,27)))
+alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+d = {k:v for (k,v) in zip(alphabet, list(range(1,27)))}
+```
+
+이렇게 만들면 1부터 27까지 값을 갖는 알파벳 딕셔너리 생성됨.
+
+다양하게들 한다 다들 ㅎ.ㅎ
+
+
+
+
+
+
+
