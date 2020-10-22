@@ -1,52 +1,94 @@
-# from copy import deepcopy
-
-def solution(key, lock):
-    N = len(lock)
-    M = len(key)
-
-    # 1번 전체 맵 3N 사이즈로 재구성하기.
-    lock_map = [ [0] * 3*N for _ in range(3*N) ]
+def key_lock(key, lock):
     for i in range(N):
         for j in range(N):
-            lock_map[N + i][N + j] = lock[i][j]
-    # 프린트로 만든거 꼭 확인해보기
-    # print(*lock_map, sep='\n')
-
-    # 2번 90도 회전하는 함수 만들기
-    def rotate(arr):
-        return list(zip(*arr[::-1]))
-    # 꼭 다시 시험해봐야 한다.
-    # print(*key, sep='\n')
-    # print(*rotate(key), sep='\n')
-
-    # 3번. 4번동안 key 돌려가면서, N - M + 1 부터 2N - 1까지 시도하기. copy로 시도
-    for _ in range(4):
-        # copied_map = deepcopy(lock_map) 카피는 보류하자.
-        
-        for i in range(N - M + 1, 2*N):
-            for j in range(N - M + 1, 2*N):
-                # 자물쇠에 key를 더해주는 로직
-                for ii in range(M):
-                    for jj in range(M):
-                        lock_map[i + ii][j + jj] += key[ii][jj]
-                
-                # 열쇠가 잠겼는지 확인
-                flag = True
-                for y in range(N, 2*N):
-                    for x in range(N, 2*N):
-                        if lock_map[y][x] != 1:
-                            flag = False
-                            break
-                    if flag == False:
+            # 여기서 4개의 체킹 함수
+            # 1번!
+            # 나머지가 1인지 체크
+            check_one = True
+            for ii2 in range(i + 1, N):
+                for jj2 in range(j + 1, N):
+                    if lock[ii2][jj2] != 1:
+                        check_one = False
                         break
-                if flag == True:
+                if check_one == False:
+                    break
+            # 검증하는 조건이 될 때 !
+            if check_one == True:
+                iii = M - 1
+                check_two = True
+                for ii in range(i, -1, -1):
+                    jjj = M - 1
+                    for jj in range(j, -1, -1):
+                        if lock[ii][jj] + key[iii][jjj] != 1:
+                            check_two = False
+                            break
+                        jjj -= 1
+                    if check_two == False:
+                        break
+                    iii -= 1
+                # 일련의 과정을 거쳐서 다 통과하면 참을 리턴...?
+                if check_two == True:
                     return True
-                
-                # 다시 자물쇠에서 key 빼주기
-                for ii in range(M):
-                    for jj in range(M):
-                        lock_map[i + ii][j + jj] -= key[ii][jj]
-        
-        # 열쇠 사용 후, 90도 회전 해주기.
-        key = rotate(key)
-    return False
+            
+            # 2번 방향 로직
+            check_one = True
+            for ii2 in range(i + 1, N):
+                for jj2 in range(j + 1, N):
+                    if lock[ii2][jj2] != 1:
+                        check_one = False
+                        break
+                if check_one == False:
+                    break
+            # 검증하는 조건이 될 때 !
+            if check_one == True:
+                iii = M - 1
+                check_two = True
+                for ii in range(i, -1, -1):
+                    jjj = M - 1
+                    for jj in range(j, -1, -1):
+                        if lock[ii][jj] + key[iii][jjj] != 1:
+                            check_two = False
+                            break
+                        jjj -= 1
+                    if check_two == False:
+                        break
+                    iii -= 1
+                # 일련의 과정을 거쳐서 다 통과하면 참을 리턴...?
+                if check_two == True:
+                    return True
+
+                    
+
+
+def solution(key, lock):
+    answer = False
+    N = len(lock)
+    key2 = [ [0] * N for _ in range(N) ]
+    key3 = [ [0] * N for _ in range(N) ]
+    key4 = [ [0] * N for _ in range(N) ]
+    
+
+
+
+    for i in range(N):
+        for j in range(N):
+            key2[j][N - 1 - i] = key[i][j]
+
+    for i in range(N):
+        for j in range(N):
+            key3[j][N - 1 - i] = key2[i][j]
+
+    for i in range(N):
+        for j in range(N):
+            key4[j][N - 1 - i] = key3[i][j]
+
+    # print(*key, sep='\n')
+    # print(*key2, sep='\n')
+    # print(*key3, sep='\n')
+    # print(*key4, sep='\n')
+
+    return answer
+
+
+
+solution([[0, 0, 0], [1, 0, 0], [0, 1, 1]], [[1, 1, 1], [1, 1, 0], [1, 0, 1]])

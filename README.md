@@ -96,6 +96,14 @@ d = {k:v for (k,v) in zip(alphabet, list(range(1,27)))}
 
 
 
+### 8. BFS할 때 visited 표현하기
+
+```python
+visited = [ [] for _ in range(n + 1) ]
+visited = { n, [] for _ in range(n + 1) }
+### 이런 식으로 dict로도 만들 수 있는데 일단 이거는 아닐걸.
+```
+
 
 
 
